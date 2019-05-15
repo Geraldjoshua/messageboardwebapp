@@ -2,7 +2,7 @@
 #a very simple webapp implemented using flask
 
 
-from flask import Flask   #loading the Flask framework 
+from flask import Flask, render_template   #loading the Flask framework 
 
 app = Flask(__name__)      # creates a flask application to run my code
 
@@ -10,7 +10,7 @@ app = Flask(__name__)      # creates a flask application to run my code
 
 
 def index():
-    return "Hello, dudes!"
+    return render_template("main_page.html")
     
 
 if __name__ == '__main__':
