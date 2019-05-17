@@ -21,25 +21,92 @@
 				</button>
 				<a class="navbar-brand" href="#">My Message board</a>
 			</div>
+			<div class ="row">
+			
+				<!--table to see what is happening-->
+				<div class="container-feed col col-md-12 scrolliy">
+					<table class="table">
+						<thread>
+							<tr>
+								<th>newsFeed</th>
+							</tr>
+						</thread>
+						<tbody id="feed">
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<!--userlist-->
+				<div class="container-fixed col col-md-4 scrollit">
+					<table class="table">
+						<thread>
+							<tr>
+								<th>allusers</th>
+							</tr>
+						</thread>
+						<tbody id="users"></tbody>
+					</table>
+				</div>
+				
+				<!--listofrooms available-->
+				<div class = "cntainer-fixed col col-md-4 scrollit">
+					<table class="table">
+						<thread>
+							<tr>
+								<th>Roomsavailable</th>
+								<th><button type="button" class="form-control btn btn-success" style=width: 50%; float: right;" data-toggle="modal" data-target="#RoomModal"/>Create</button></th>
+							</tr>
+						</thread>
+						<tbody id="rooms">
+						</tbody>
+					</table>
+				</div>
+			</div>  <!--check this to add room's users(above it-->
+			<br/>
+			<br/>
+			
+			<div id="chat">
+			</div>
 		</div>
 	</nav>
+	
 	<div class="container">
 	
 		<div class="row">
-			This is my first message.
+			group1: how to use flask!.
+			<form action="." method="POST">
+					<div class="form-group">
+						
+						<input class="form-control" id="password" name="password" placeholder="Enter group password to enter">
+					</div>
+				<button type="submit" class="btn btn-success">Join</button>
+			</form>	
 		</div>
 		
 		<div class="row">
-			This is yo whatsapp?
+			group2: let us talk python.
+			<form action="." method="POST">
+					<div class="form-group">
+						<input class="form-control" id="password" name="password" placeholder="Enter group password to enter">
+					</div>
+				<button type="submit" class="btn btn-success">Join</button>
+			</form>	
 		</div>
 		
 		<div class="row">
-			This is dude its boring whatsapp?
+			group3: how to use angular.
+			<form action="." method="POST">
+					<div class="form-group">
+						<input class="form-control" id="password" name="password" placeholder="Enter group password to enter">
+					</div>
+				<button type="submit" class="btn btn-success">Join</button>
+			</form>	
 		</div>
 		
 		{% for comment in comments %}
 			<div class="row">
-				{{comment}}
+				{{comment.content}}
 			</div>
 		{% endfor %}
 		
