@@ -21,6 +21,13 @@
 				</button>
 				<a class="navbar-brand" href="#">My Message board</a>
 			</div>
+			<ul class="nav navbar-nav navbar-right">
+				{% if current_user.is_authenticated %}
+				<li><a href="{{ url_for('logout') }}">Log out</a></li>
+				{% else %}
+				<li><a href="{{ url_for('login') }}">Log in</a></li>
+				{% endif %}
+			</ul>
 			<div class ="row">
 			
 				<!--table to see what is happening-->
@@ -72,50 +79,101 @@
 	</nav>
 	
 	<div class="container">
-	
+	<style>
+	* {
+	  box-sizing: border-box;
+	}
+
+	/* Create three equal columns that floats next to each other */
+	.column {
+	  float: left;
+	  width: 33.33%;
+	  padding: 10px;
+	  height: 300px; /* Should be removed. Only for demonstration */
+	}
+
+	/* Clear floats after the columns */
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+
+	/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+	@media screen and (max-width: 600px) {
+	  .column {
+		width: 100%;
+	  }
+	}
+	</style>
+	<h2>Groups available</h2>
+	<p>Note: you need to have sign in to be able to join a group.</p>
 		<div class="row">
-			group1: how to use flask!.
-			<form action="." method="POST">
+			<div class="column" style="background-color:#aaa;">
+			<h2>groupname:</h2>
+			1.how to use flask!.
+			{% if current_user.is_authenticated %}
+			<form id="myForm" action="." method="POST">
 					<div class="form-group">
 						
 						<input class="form-control" id="password" name="password" placeholder="Enter group password to enter">
 					</div>
-				<button type="submit" class="btn btn-success">Join</button>
+				<button type="submit" onclick="myFunction()" class="btn btn-success">Join</button>
 			</form>	
-		</div>
-		
-		<div class="row">
-			group2: let us talk python.
-			<form action="." method="POST">
-					<div class="form-group">
-						<input class="form-control" id="password" name="password" placeholder="Enter group password to enter">
-					</div>
-				<button type="submit" class="btn btn-success">Join</button>
-			</form>	
-		</div>
-		
-		<div class="row">
-			group3: how to use angular.
-			<form action="." method="POST">
-					<div class="form-group">
-						<input class="form-control" id="password" name="password" placeholder="Enter group password to enter">
-					</div>
-				<button type="submit" class="btn btn-success">Join</button>
-			</form>	
-		</div>
-		
-		{% for comment in comments %}
-			<div class="row">
-				{{comment.content}}
+			{% endif %}
 			</div>
-		{% endfor %}
-		
-		<div class="row">
-			<form action="." method="POST">
-				<textarea class="form-control" name="contents" placeholder="Enter a message"></textarea>
-				<input type="submit" class="btn btn-success" value="Post message">
-			</form>
+			<div class="column" style="background-color:#bbb;">
+			<h2>groupname:</h2>
+			2.let us talk python.
+			{% if current_user.is_authenticated %}
+			<form id="myForm1" action="." method="POST">
+					<div class="form-group">
+						<input class="form-control" id="password" name="password" placeholder="Enter group password to enter">
+					</div>
+				<button type="submit" onclick="myFunction1()" class="btn btn-success">Join</button>
+			</form>	
+			{% endif %}
+			</div>
+			<div class="column" style="background-color:#ccc;">
+			<h2>groupname:</h2>
+			3.how to use angular.
+			{% if current_user.is_authenticated %}
+			<form id="myForm2" action="." method="POST">
+					<div class="form-group">
+						<input class="form-control" id="password" name="password" placeholder="Enter group password to enter">
+					</div>
+				<button type="submit" onclick="myFunction2()" class="btn btn-success">Join</button>
+			</form>	
+			{% endif %}
+			<script>
+			function myFunction() {
+			if request.form["password"]=="flask":
+				document.getElementById("myForm").reset();
+				return redirect (url_for('group1'))
+			
+			}
+			</script>
+			<script>
+			function myFunction1() {
+			if request.form["password"]=="python":
+				document.getElementById("myForm1").reset();
+				return redirect (url_for('group2'))
+			
+			}
+			</script>
+			<script>
+			function myFunction2() {
+			if request.form["password"]=="angular":
+				document.getElementById("myForm2").reset();
+				return redirect (url_for('group3'))
+			
+			}
+			</script>
+			</div>
+			
 		</div>
+		
+		
 	</div><!--/.container -->
 	</body>
 </html>
